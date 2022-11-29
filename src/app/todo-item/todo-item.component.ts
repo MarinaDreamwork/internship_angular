@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ITodo, TodoService } from '../services/todo.service';
-
-
 
 @Component({
   selector: 'app-todo-item',
@@ -9,11 +7,18 @@ import { ITodo, TodoService } from '../services/todo.service';
   styleUrls: ['./todo-item.component.scss']
 })
 
-export class TodoItemComponent {
+export class TodoItemComponent implements OnInit {
 
-  constructor(public todoService: TodoService) { }
+  constructor() { }
+  ngOnInit(): void {
+
+  }
+
+  @Input()
+  todo!: ITodo;
 
   getClass(status: ITodo['status']) {
+    console.log('status', status);
     if (status === 'done') {
       return 'done';
     } else if (status === 'important') {
