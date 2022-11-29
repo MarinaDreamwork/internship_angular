@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ITodo, TodoService } from '../services/todo.service';
 
 
 
@@ -10,6 +11,16 @@ import { Component } from '@angular/core';
 
 export class TodoItemComponent {
 
-  constructor() { }
+  constructor(public todoService: TodoService) { }
+
+  getClass(status: ITodo['status']) {
+    if (status === 'done') {
+      return 'done';
+    } else if (status === 'important') {
+      return 'important';
+    } else {
+      return 'usual';
+    }
+  }
 
 }

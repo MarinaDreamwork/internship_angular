@@ -1,0 +1,22 @@
+div {
+	display: flex;
+	justify-content: center;
+	font-size: large;
+}
+
+.done {
+	text-decoration: line-through;
+}
+
+.important {
+	color: red;
+	font-weight: 900;
+}
+
+.important::after {
+	content: '!';
+}
+
+.usual {
+	font-weight: 600;
+}
