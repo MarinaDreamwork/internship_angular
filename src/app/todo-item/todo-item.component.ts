@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 
-export interface ITodo {
-  id: number,
-  title: string,
-  status: 'usual' | 'important' | 'done'
-}
+
 
 @Component({
   selector: 'app-todo-item',
@@ -13,11 +9,6 @@ export interface ITodo {
 })
 
 export class TodoItemComponent {
-  todos: Array<ITodo> = [
-    { id: 1, title: 'Выучить Angular', status: 'important' },
-    { id: 2, title: 'Подготовить курсовой проект', status: 'usual' },
-    { id: 3, title: 'Попасть на стажировку', status: 'done' }
-  ];
 
   constructor() { }
 
