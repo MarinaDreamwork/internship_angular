@@ -1,4 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { createInjectableType } from '@angular/compiler';
+import { Component, Output, EventEmitter, Inject, Input } from '@angular/core';
+import { ITodo } from 'src/app/services/todo.service';
 
 @Component({
 	selector: 'app-todo-item-select',
@@ -11,10 +13,11 @@ export class TodoItemSelectComponent {
 	statuses = [{ name: 'Обычная', status: 'usual' }, { name: 'Важная', status: 'important' }, { name: 'Выполнена', status: 'done' }];
 	constructor() { }
 
-	@Output() onTextFilter = new EventEmitter();
-	@Output() onStatusFilter = new EventEmitter();
+	@Output() onStatusUpdate = new EventEmitter();
+	@Input() todo!: ITodo;
 
 	changed() {
-		this.onStatusFilter.emit(this.selected);
+		console.log('selected', this.selected);
+		this.onStatusUpdate.emit(this.selected);
 	}
 }

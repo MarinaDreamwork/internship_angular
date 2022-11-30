@@ -1,4 +1,10 @@
 import { Injectable } from '@angular/core';
+export type IStatus = [
+  { name: 'Обычная', status: 'usual' },
+  { name: 'Важная', status: 'important' },
+  { name: 'Выполнена', status: 'done' }
+];
+
 export interface ITodo {
   id: number,
   title: string,
@@ -19,25 +25,21 @@ export class TodoService {
   constructor() { }
 
   onAddTodo(data: { title: ITodo['title'], status: ITodo['status'] }): void {
-    console.log('data', data);
     if (this.todos) {
       const newTodo = { id: Date.now(), ...data };
       this.todos.push(newTodo);
     }
-    console.log('filtered', this.filteredTodo);
-
   }
 
   deleteTodo(id: ITodo['id']) {
     if (this.todos) {
       this.todos = this.todos.filter(todo => todo.id !== id);
     }
-
   }
 
-  updateTodo(id: ITodo['id'], newStatus: ITodo['status']) {
+  updateTodo(data: { id: ITodo['id'], newStatus: ITodo['status'] }) {
     if (this.todos) {
-      this.todos[id].status = newStatus;
+      this.todos = this.todos.map(el => el.id === data.id ? { ...el, status: data.newStatus } : el);
     }
   }
 }

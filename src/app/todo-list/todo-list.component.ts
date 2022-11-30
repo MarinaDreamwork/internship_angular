@@ -38,7 +38,12 @@ export class TodoListComponent implements OnInit {
     } else return;
     console.log('filtered', this.todoService.filteredTodo);
     return;
-
+  }
+  onStatusUpdate(data: { id: ITodo['id'], newStatus: ITodo['status'] }) {
+    console.log('data', data);
+    const updatedTodo = this.todoService.updateTodo(data)
+    console.log('updatedTodo', updatedTodo);
+    console.log('all todos', this.todoService.todos);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ITodo } from '../services/todo.service';
 
 @Component({
@@ -8,14 +8,17 @@ import { ITodo } from '../services/todo.service';
 })
 
 export class TodoItemComponent implements OnInit {
+  selected = '';
+
+  statuses = [{ name: 'Обычная', status: 'usual' }, { name: 'Важная', status: 'important' }, { name: 'Выполнена', status: 'done' }];
 
   constructor() { }
-  ngOnInit(): void {
 
-  }
+  ngOnInit(): void { }
 
   @Input()
   todo!: ITodo;
+  @Output() onStatusUpdate = new EventEmitter();
 
   getClass(status: ITodo['status']) {
     if (status === 'done') {
@@ -25,6 +28,14 @@ export class TodoItemComponent implements OnInit {
     } else {
       return 'usual';
     }
+  }
+
+  // updateStatus(data: { id: ITodo['id'], status: ITodo['status'] }) {
+  //   this.onStatusUpdate.emit(data);
+  // }
+  changed() {
+    console.log('selected', this.selected);
+    this.onStatusUpdate.emit(this.selected);
   }
 
 }

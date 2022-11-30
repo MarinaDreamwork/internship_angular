@@ -5,7 +5,7 @@
 	</form>
 	<div class="search-block_search-status">
 		<select [(ngModel)]="selected" (change)="changed()">
-			<option value="">Выберете статус:</option>
+			<option value="">Выберите статус:</option>
 			<option *ngFor="let status of statuses" value={{status.status}} [ngValue]="status.status">
 				{{status.name}}</option>
 		</select>

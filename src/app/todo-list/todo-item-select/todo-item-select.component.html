@@ -1,7 +1,7 @@
 <!-- <div class="search-block_search-status">
 	<select [(ngModel)]="selected" (change)="changed()">
 		<option value="">Выберете статус:</option>
-		<option *ngFor="let status of statuses" value={{status.status}} [ngValue]="status.status">
+		<option *ngFor="let status of statuses" value={{status.status}} [ngValue]="{status: status.status, id: todo.id}">
 			{{status.name}}</option>
 	</select>
 </div> -->
