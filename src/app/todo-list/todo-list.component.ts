@@ -18,26 +18,16 @@ export class TodoListComponent implements OnInit {
     //this.todoService.todos
   }
   onAddTodo(data: { title: ITodo['title'], status: ITodo['status'] }) {
+    console.log('data', data);
     this.todoService.onAddTodo(data);
   }
-  onTextFilter(searchText: string): void {
-    console.log('searchText', searchText);
-    if (this.todoService.todos) {
-      console.log('this.todoService.todos', this.todoService.todos);
-      this.todoService.filteredTodo = this.todoService.todos.filter(todo => todo.title.toLowerCase().includes(searchText.toLowerCase()));
-    }
-    console.log('filtered', this.todoService.filteredTodo);
+
+  onTextFilter(searchText: string) {
+    this.todoService.filterText(searchText)
   }
-  onStatusFilter(status: ITodo['status']): ITodo[] | undefined {
-    console.log('status', status);
-    if (this.todoService.todos) {
-      const filtered = this.todoService.todos.filter(todo => todo.status === status);
-      if (filtered) {
-        this.todoService.filteredTodo = filtered;
-      } else return;
-    } else return;
-    console.log('filtered', this.todoService.filteredTodo);
-    return;
+
+  onStatusFilter(status: ITodo['status']) {
+    this.todoService.filterStatus(status);
   }
 
   onStatusUpdate(data: { id: ITodo['id'], newStatus: ITodo['status'] }) {

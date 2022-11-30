@@ -42,4 +42,19 @@ export class TodoService {
       this.todos = this.todos.map(el => el.id === data.id ? { ...el, status: data.newStatus } : el);
     }
   }
+
+  filterText(searchText: string): void {
+    if (this.todos) {
+      this.filteredTodo = this.todos.filter(todo => todo.title.toLowerCase().includes(searchText.toLowerCase()));
+    }
+  }
+  filterStatus(status: ITodo['status']): ITodo[] | undefined {
+    if (this.todos) {
+      const filtered = this.todos.filter(todo => todo.status === status);
+      if (filtered) {
+        this.filteredTodo = filtered;
+      } else return;
+    } else return;
+    return;
+  }
 }

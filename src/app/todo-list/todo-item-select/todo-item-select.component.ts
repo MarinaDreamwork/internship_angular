@@ -8,16 +8,17 @@ import { ITodo } from 'src/app/services/todo.service';
 	styleUrls: ['./todo-item-select.component.scss']
 })
 export class TodoItemSelectComponent {
-	selected = '';
-	search: string = '';
+	selected: ITodo['status'] | '' = '';
 	statuses = [{ name: 'Обычная', status: 'usual' }, { name: 'Важная', status: 'important' }, { name: 'Выполнена', status: 'done' }];
 	constructor() { }
 
 	@Output() onStatusUpdate = new EventEmitter();
 	@Input() todo!: ITodo;
+	@Output() receiveStatusTodo = new EventEmitter();
 
 	changed() {
-		console.log('selected', this.selected);
-		this.onStatusUpdate.emit(this.selected);
+		console.log('this.selected', this.selected);
+		this.receiveStatusTodo.emit(this.selected);
 	}
+
 }

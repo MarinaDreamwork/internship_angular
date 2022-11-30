@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ITodo } from '../services/todo.service';
+import { ITodo } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -31,11 +31,7 @@ export class TodoItemComponent implements OnInit {
     }
   }
 
-  // updateStatus(data: { id: ITodo['id'], status: ITodo['status'] }) {
-  //   this.onStatusUpdate.emit(data);
-  // }
   changed() {
-    console.log('selected', this.selected);
     this.onStatusUpdate.emit(this.selected);
   }
 
