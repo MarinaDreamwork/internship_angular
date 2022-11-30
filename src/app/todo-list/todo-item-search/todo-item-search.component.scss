@@ -1,0 +1,28 @@
+.search-block {
+	margin: 20px;
+	padding: 20px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+input, select, button {
+	padding: 10px;
+	margin: 5px;
+	border-radius: 5px;
+}
+
+input, select {
+	box-shadow: 2px 2px 1px grey;
+	border: 1px solid grey;
+	
+	outline: none;
+}
+
+button {
+	background-color:  #00FF7F;
+	border: 1px solid #078a49;
+	box-shadow: 2px 2px 1px #078a49;
+}
+.search-block_search-name {
+
+}

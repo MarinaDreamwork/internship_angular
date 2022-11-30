@@ -1,5 +1,5 @@
 
-import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, Output, EventEmitter } from '@angular/core';
 import { ITodo, TodoService } from 'src/app/services/todo.service';
 
 @Component({

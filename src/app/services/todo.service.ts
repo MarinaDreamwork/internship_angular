@@ -9,26 +9,35 @@ export interface ITodo {
   providedIn: 'root'
 })
 export class TodoService {
-  count = 4;
-  todos: Array<ITodo> = [
+  todos: Array<ITodo> | undefined = [
     { id: 1, title: 'Выучить Angular', status: 'important' },
     { id: 2, title: 'Подготовить курсовой проект', status: 'usual' },
     { id: 3, title: 'Попасть на стажировку', status: 'done' }
   ];
+  filteredTodo: Array<ITodo> | undefined = [];
+
   constructor() { }
 
-  onAddTodo(data: { title: ITodo['title'], status: ITodo['status'] }) {
+  onAddTodo(data: { title: ITodo['title'], status: ITodo['status'] }): void {
     console.log('data', data);
-    console.log('this.todos', this.todos);
-    this.todos.push({ id: Date.now(), ...data });
+    if (this.todos) {
+      const newTodo = { id: Date.now(), ...data };
+      this.todos.push(newTodo);
+    }
+    console.log('filtered', this.filteredTodo);
+
   }
 
   deleteTodo(id: ITodo['id']) {
-    this.todos = this.todos.filter(todo => todo.id !== id);
+    if (this.todos) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
+    }
+
   }
 
   updateTodo(id: ITodo['id'], newStatus: ITodo['status']) {
-    this.todos[id].status = newStatus;
+    if (this.todos) {
+      this.todos[id].status = newStatus;
+    }
   }
-
 }

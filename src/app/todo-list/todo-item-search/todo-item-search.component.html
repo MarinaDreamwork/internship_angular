@@ -1,0 +1,13 @@
+<div class="search-block">
+	<form class="search-block_search-name">
+		<input type='text' placeholder='Поиск по названию todo' [(ngModel)]='search' ng-model="search" name='search' />
+		<button (click)="onTextFilter.emit(search)">Поиск</button>
+	</form>
+	<div class="search-block_search-status">
+		<select [(ngModel)]="selected" (change)="changed()">
+			<option value="">Выберете статус:</option>
+			<option *ngFor="let status of statuses" value={{status.status}} [ngValue]="status.status">
+				{{status.name}}</option>
+		</select>
+	</div>
+</div>
