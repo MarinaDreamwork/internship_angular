@@ -19,6 +19,7 @@ export class TodoItemComponent implements OnInit {
   @Input()
   todo!: ITodo;
   @Output() onStatusUpdate = new EventEmitter();
+  @Output() onDeleteTodo = new EventEmitter();
 
   getClass(status: ITodo['status']) {
     if (status === 'done') {

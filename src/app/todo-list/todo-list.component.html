@@ -5,13 +5,15 @@
 
 	<div *ngIf="todoService.filteredTodo!.length > 0; else notFiltered">
 		<div *ngFor="let todo of todoService.filteredTodo">
-			<app-todo-item [todo]="todo" (onStatusUpdate)="onStatusUpdate($event)"></app-todo-item>
+			<app-todo-item [todo]="todo" (onStatusUpdate)="onStatusUpdate($event)" (onDeleteTodo)="onDeleteTodo($event)">
+			</app-todo-item>
 		</div>
 	</div>
 
 	<ng-template #notFiltered>
 		<div *ngFor="let todo of todoService.todos">
-			<app-todo-item [todo]="todo" (onStatusUpdate)="onStatusUpdate($event)"></app-todo-item>
+			<app-todo-item [todo]="todo" (onStatusUpdate)="onStatusUpdate($event)" (onDeleteTodo)="onDeleteTodo($event)">
+			</app-todo-item>
 		</div>
 	</ng-template>
 

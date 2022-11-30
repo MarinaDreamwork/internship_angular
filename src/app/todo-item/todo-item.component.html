@@ -8,5 +8,8 @@
 				{{status.name}}</option>
 		</select>
 	</div>
+	<div>
+		<button class="delete-sign" (click)="onDeleteTodo.emit(todo.id)">&#10008;</button>
+	</div>
 	<!-- <app-todo-item-select (onStatusUpdate)="onStatusUpdate.emit($event)" [todo]="todo"></app-todo-item-select> -->
 </div>
