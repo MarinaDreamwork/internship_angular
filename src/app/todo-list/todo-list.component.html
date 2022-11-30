@@ -1,3 +1,6 @@
-<div *ngFor="let todo of todoService.todos">
-	<app-todo-item [todo]="todo"></app-todo-item>
+<div>
+	<div *ngFor="let todo of todoService.todos">
+		<app-todo-item [todo]="todo"></app-todo-item>
+	</div>
+	<app-new-todo-item (onAddTodo)='onAddTodo($event)'></app-new-todo-item>
 </div>

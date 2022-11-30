@@ -9,6 +9,7 @@ export interface ITodo {
   providedIn: 'root'
 })
 export class TodoService {
+  count = 4;
   todos: Array<ITodo> = [
     { id: 1, title: 'Выучить Angular', status: 'important' },
     { id: 2, title: 'Подготовить курсовой проект', status: 'usual' },
@@ -16,8 +17,10 @@ export class TodoService {
   ];
   constructor() { }
 
-  addTodo(todo: ITodo) {
-    this.todos.push(todo);
+  onAddTodo(data: { title: ITodo['title'], status: ITodo['status'] }) {
+    console.log('data', data);
+    console.log('this.todos', this.todos);
+    this.todos.push({ id: Date.now(), ...data });
   }
 
   deleteTodo(id: ITodo['id']) {
@@ -27,4 +30,5 @@ export class TodoService {
   updateTodo(id: ITodo['id'], newStatus: ITodo['status']) {
     this.todos[id].status = newStatus;
   }
+
 }
