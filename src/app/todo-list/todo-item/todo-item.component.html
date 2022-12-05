@@ -2,7 +2,7 @@
 	<p [ngClass]="getClass(todo.status)">{{todo.title}}</p>
 	<div class="search-block_search-status">
 		<select [(ngModel)]="selected" (change)="changed()">
-			<option value="">Выберите статус:</option>
+			<option value="">Изменить статус:</option>
 			<option *ngFor="let status of statuses" value={{status.status}}
 				[ngValue]="{newStatus: status.status, id: todo.id}">
 				{{status.name}}</option>

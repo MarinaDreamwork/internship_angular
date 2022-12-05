@@ -9,6 +9,7 @@ import { NewTodoItemComponent } from './todo-list/new-todo-item/new-todo-item.co
 import { FormsModule } from '@angular/forms';
 import { TodoItemSearchComponent } from './todo-list/todo-item-search/todo-item-search.component';
 import { TodoItemSelectComponent } from './todo-list/todo-item-select/todo-item-select.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TodoItemSelectComponent } from './todo-list/todo-item-select/todo-item-
     TodoListComponent,
     NewTodoItemComponent,
     TodoItemSearchComponent,
-    TodoItemSelectComponent
+    TodoItemSelectComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,33 @@
+// div {
+// 	display: flex;
+// 	flex-direction: column;
+// }
+
+input {
+	
+	outline: none;
+}
+
+input, button {
+	padding: 10px;
+	margin: 5px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 1px grey;
+	border: 1px solid grey;
+}
+
+.auth-button {
+	display: flex;
+	justify-content: center;
+}
+
+button {
+	width: 50%;
+	font-weight: 700;
+}
+
+.input {
+	display: flex;
+	flex-direction: column;
+	margin: 15px;
+}

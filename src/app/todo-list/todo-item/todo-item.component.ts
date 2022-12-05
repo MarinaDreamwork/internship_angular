@@ -3,7 +3,7 @@ import { ITodo } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-item',
-  templateUrl: '../todo-item/todo-item.component.html',
+  templateUrl: './todo-item.component.html',
   styleUrls: ['../todo-item/todo-item.component.scss']
 })
 

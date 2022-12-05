@@ -1,0 +1,13 @@
+<div>
+	<div class="input">
+		<label for="loginInput">Введите логин:</label>
+		<input type='text' id="loginInput" #loginInput />
+	</div>
+	<div class="input">
+		<label>Введите пароль:</label>
+		<input type='text' #passwordInput />
+	</div>
+	<div class='auth-button'>
+		<button (click)="onAuth()">Войти</button>
+	</div>
+</div>
