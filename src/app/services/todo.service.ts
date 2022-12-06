@@ -11,9 +11,7 @@ export interface ITodo {
   status: 'usual' | 'important' | 'done'
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TodoService {
   todos: Array<ITodo> | undefined = [
     { id: 1, title: 'Выучить Angular', status: 'important' },

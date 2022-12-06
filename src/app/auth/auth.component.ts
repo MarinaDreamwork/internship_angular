@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -9,9 +10,13 @@ export class AuthComponent {
   @ViewChild('loginInput', { static: true }) loginInput!: ElementRef;
   @ViewChild('passwordInput') passwordInput!: ElementRef;
 
+  constructor(private authService: AuthService) { }
+
   onAuth() {
-    console.log('login:', this.loginInput.nativeElement.value);
-    console.log('password:', this.passwordInput.nativeElement.value);
+    const email = this.loginInput.nativeElement.value;
+    const password = this.passwordInput.nativeElement.value;
+    const fio = '';
+    this.authService.login(email, password, fio);
   }
 
 }
