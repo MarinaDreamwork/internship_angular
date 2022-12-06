@@ -15,6 +15,7 @@ import { DescriptionProjectComponent } from './description-project/description-p
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { TodoService } from './services/todo.service';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TodoService } from './services/todo.service';
     TodoItemSearchComponent,
     TodoItemSelectComponent,
     AuthComponent,
-    DescriptionProjectComponent
+    DescriptionProjectComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
