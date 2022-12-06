@@ -21,7 +21,6 @@ export class TodoService {
 
   constructor(private http: HttpClient) {
     this.http.get('assets/todo-list.json').subscribe(data => {
-      console.log('data', data, 'data.typeof', typeof data);
       this.todos = data;
     })
   }
