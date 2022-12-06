@@ -1,4 +1,7 @@
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 export type IStatus = [
   { name: 'Обычная', status: 'usual' },
   { name: 'Важная', status: 'important' },
@@ -13,14 +16,15 @@ export interface ITodo {
 
 @Injectable()
 export class TodoService {
-  todos: Array<ITodo> | undefined = [
-    { id: 1, title: 'Выучить Angular', status: 'important' },
-    { id: 2, title: 'Подготовить курсовой проект', status: 'usual' },
-    { id: 3, title: 'Попасть на стажировку', status: 'done' }
-  ];
+  todos: any;
   filteredTodo: Array<ITodo> | undefined = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.http.get('assets/todo-list.json').subscribe(data => {
+      console.log('data', data, 'data.typeof', typeof data);
+      this.todos = data;
+    })
+  }
 
   onAddTodo(data: { title: ITodo['title'], status: ITodo['status'] }): void {
     if (this.todos) {
@@ -31,24 +35,24 @@ export class TodoService {
 
   deleteTodo(id: ITodo['id']) {
     if (this.todos) {
-      this.todos = this.todos.filter(todo => todo.id !== id);
+      this.todos = this.todos.filter((todo: ITodo) => todo.id !== id);
     }
   }
 
   updateTodo(data: { id: ITodo['id'], newStatus: ITodo['status'] }) {
     if (this.todos) {
-      this.todos = this.todos.map(el => el.id === data.id ? { ...el, status: data.newStatus } : el);
+      this.todos = this.todos.map((el: ITodo) => el.id === data.id ? { ...el, status: data.newStatus } : el);
     }
   }
 
   filterText(searchText: string): void {
     if (this.todos) {
-      this.filteredTodo = this.todos.filter(todo => todo.title.toLowerCase().includes(searchText.toLowerCase()));
+      this.filteredTodo = this.todos.filter((todo: ITodo) => todo.title.toLowerCase().includes(searchText.toLowerCase()));
     }
   }
   filterStatus(status: ITodo['status']): ITodo[] | undefined {
     if (this.todos) {
-      const filtered = this.todos.filter(todo => todo.status === status);
+      const filtered = this.todos.filter((todo: ITodo) => todo.status === status);
       if (filtered) {
         this.filteredTodo = filtered;
       } else return;
