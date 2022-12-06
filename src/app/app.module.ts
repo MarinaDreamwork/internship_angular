@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ENVIRONMENT_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,7 +12,7 @@ import { TodoItemSearchComponent } from './todo-list/todo-item-search/todo-item-
 import { TodoItemSelectComponent } from './todo-list/todo-item-select/todo-item-select.component';
 import { AuthComponent } from './auth/auth.component';
 import { DescriptionProjectComponent } from './description-project/description-project.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { TodoService } from './services/todo.service';
 
@@ -32,7 +33,8 @@ import { TodoService } from './services/todo.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, TodoService],
+  providers: [AuthService, TodoService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 export type IStatus = [
   { name: 'Обычная', status: 'usual' },
@@ -17,13 +18,14 @@ export interface ITodo {
 @Injectable()
 export class TodoService {
   todos: any;
-  filteredTodo: Array<ITodo> | undefined = [];
+  filteredTodo: ITodo[] | undefined = [];
 
   constructor(private http: HttpClient) {
     this.http.get('assets/todo-list.json').subscribe(data => {
       this.todos = data;
     })
   }
+
 
   onAddTodo(data: { title: ITodo['title'], status: ITodo['status'] }): void {
     if (this.todos) {
