@@ -9,11 +9,10 @@ import { ITodo, TodoService } from 'src/app/services/todo.service';
 })
 export class NewTodoItemComponent {
   selectedStatus = '';
+  title!: ITodo['title'];
+  status!: ITodo['status'];
 
-  constructor(
-    @Inject(TodoService) public title: ITodo['title'],
-    @Inject(TodoService) public status: ITodo['status']
-  ) { }
+  constructor() { }
 
   @Output() onAddTodo = new EventEmitter();
 
